@@ -33,18 +33,18 @@ public class Function {
 			final ExecutionContext context) throws Exception {
 		context.getLogger().info("Java HTTP trigger processed a request.");
 
-		// Create H2O object (see gbm_pojo_test.java)
-		hex.genmodel.GenModel rawModel;
-		rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
-		EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
-
 		// Parse query parameter
 		String query = request.getQueryParameters().get("name");
 		String name = request.getBody().orElse(query);
 
 		context.getLogger().info("#####################");
 		context.getLogger().info("Input Values:" + name);
-		
+
+		// Create H2O object (see gbm_pojo_test.java)
+		hex.genmodel.GenModel rawModel;
+		rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
+		EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
+
 		if (name == null) {
 			return request.createResponse(400, "Please pass a name on the query string or in the request body");
 		} else {
@@ -65,7 +65,7 @@ public class Function {
 
 			BinomialModelPrediction p = null;
 			//try {
-				p = model.predictBinomial(row);
+			p = model.predictBinomial(row);
 			//} catch (PredictException e) {
 			//	e.printStackTrace();
 			//}
