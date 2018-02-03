@@ -34,9 +34,10 @@ public class Function {
 		context.getLogger().info("Java HTTP trigger processed a request.");
 
 		// Parse query parameter
-		String query = request.getQueryParameters().get("name");
-		String name = request.getBody().orElse(query);
-
+		//String query = request.getQueryParameters().get("name");
+		//String name = request.getBody().orElse(query);
+		String name = request.getBody().toString();
+		
 		context.getLogger().info("#####################");
 		context.getLogger().info("Input Values: " + name);
 
@@ -51,11 +52,11 @@ public class Function {
 
 		JSONObject obj = new JSONObject(name);
 
-		if (1 == 1) {
+		//if (isValidJSON(name)){
 			context.getLogger().info("Boo!");
-		} else {
+		//} else if (){
 			context.getLogger().info("Poo!");
-		}
+		//}
 
 		//Getting String values  inside JSONObject obj :
 		String AGE = obj.getString("AGE");
