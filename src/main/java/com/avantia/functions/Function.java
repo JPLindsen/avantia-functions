@@ -51,8 +51,10 @@ public class Function {
 
 		JSONObject obj = new JSONObject(name);
 
-		context.getLogger().info(obj.getString("AGE"));
-		
+		if (obj.has("AGE")) {
+			context.getLogger().info("Boo!");
+		}
+
 		//Getting String values  inside JSONObject obj :
 		String AGE = obj.getString("AGE");
 		String RACE = obj.getString("RACE");
