@@ -61,7 +61,8 @@
                 <groupId>com.microsoft.azure</groupId>
                 <artifactId>azure-functions-maven-plugin</artifactId>
                 <configuration>
-                    <resourceGroup>java-functions-group</resourceGroup>
+                    <!-- <resourceGroup>java-functions-group</resourceGroup> -->
+                    <resourceGroup>cortexTest</resourceGroup>
                     <appName>${functionAppName}</appName>
                     <region>${functionAppRegion}</region>
                     <appSettings>
