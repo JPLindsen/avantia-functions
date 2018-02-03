@@ -38,7 +38,7 @@ public class Function {
 		String name = request.getBody().orElse(query);
 
 		context.getLogger().info("#####################");
-		context.getLogger().info("Input Values:" + name);
+		context.getLogger().info("Input Values: " + name);
 
 		// Create H2O object (see gbm_pojo_test.java)
 		//hex.genmodel.GenModel rawModel;
@@ -51,7 +51,7 @@ public class Function {
 
 		JSONObject obj = new JSONObject(name);
 
-		context.getLogger().info("Age: " + obj.get("AGE"));
+		context.getLogger().info("Age: " + obj.getString("AGE"));
 		
 		//Getting String values  inside JSONObject obj :
 		String AGE = obj.getString("AGE");
