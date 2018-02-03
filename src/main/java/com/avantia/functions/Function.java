@@ -51,7 +51,7 @@ public class Function {
 
 		JSONObject obj = new JSONObject(name);
 
-		if (obj.has("AGE")) {
+		if (1 == 1) {
 			context.getLogger().info("Boo!");
 		} else {
 			context.getLogger().info("Poo!");
