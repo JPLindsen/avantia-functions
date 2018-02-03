@@ -51,7 +51,7 @@ public class Function {
 
 		JSONObject obj = new JSONObject(name);
 
-		context.getLogger().info("Age: " + obj.getString("AGE"));
+		context.getLogger().info(obj.getString("AGE"));
 		
 		//Getting String values  inside JSONObject obj :
 		String AGE = obj.getString("AGE");
