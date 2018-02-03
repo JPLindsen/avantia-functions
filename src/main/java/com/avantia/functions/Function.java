@@ -42,6 +42,9 @@ public class Function {
 		String query = request.getQueryParameters().get("name");
 		String name = request.getBody().orElse(query);
 
+		System.out.println("#####################");
+		System.out.println("Input Values:" + name);
+		
 		if (name == null) {
 			return request.createResponse(400, "Please pass a name on the query string or in the request body");
 		} else {
