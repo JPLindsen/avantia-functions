@@ -53,6 +53,8 @@ public class Function {
 
 		if (obj.has("AGE")) {
 			context.getLogger().info("Boo!");
+		} else {
+			context.getLogger().info("Poo!");
 		}
 
 		//Getting String values  inside JSONObject obj :
