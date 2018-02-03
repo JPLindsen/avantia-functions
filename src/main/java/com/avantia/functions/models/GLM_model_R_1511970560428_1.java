@@ -1,4 +1,4 @@
-package myapps.models;
+package com.avantia.functions.models;
 
 /*
   Licensed under the Apache License, Version 2.0
