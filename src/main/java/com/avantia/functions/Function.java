@@ -41,9 +41,9 @@ public class Function {
 		context.getLogger().info("Input Values:" + name);
 
 		// Create H2O object (see gbm_pojo_test.java)
-		hex.genmodel.GenModel rawModel;
-		rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
-		EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
+		//hex.genmodel.GenModel rawModel;
+		//rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
+		//EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
 
 		if (name == null) {
 			return request.createResponse(400, "Please pass a name on the query string or in the request body");
@@ -65,16 +65,16 @@ public class Function {
 			row.put("PSA", PSA);
 			row.put("GLEASON", GLEASON);
 
-			BinomialModelPrediction p = null;
+			//BinomialModelPrediction p = null;
 			//try {
-			p = model.predictBinomial(row);
+			//p = model.predictBinomial(row);
 			//} catch (PredictException e) {
 			//	e.printStackTrace();
 			//}
 
-			modelPrediction = p.label;
+			//modelPrediction = p.label;
 
-			return request.createResponse(200, "Label (aka prediction) is: " + modelPrediction);
+			return request.createResponse(200, "Label (aka prediction) is: "); //+ modelPrediction);
 		}
 	}
 }
