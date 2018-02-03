@@ -45,36 +45,36 @@ public class Function {
 		//rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
 		//EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
 
-		if (name == null) {
-			return request.createResponse(400, "Please pass a name on the query string or in the request body");
-		} else {
+		//if (name == null) {
+		//	return request.createResponse(400, "Please pass a name on the query string or in the request body");
+		//} else {
 
-			JSONObject obj = new JSONObject(name);
+		JSONObject obj = new JSONObject(name);
 
-			//Getting String values  inside JSONObject obj :
-			String AGE = obj.getString("AGE");
-			String RACE = obj.getString("RACE");
-			String PSA = obj.getString("PSA");
-			String GLEASON = obj.getString("GLEASON");
+		//Getting String values  inside JSONObject obj :
+		String AGE = obj.getString("AGE");
+		String RACE = obj.getString("RACE");
+		String PSA = obj.getString("PSA");
+		String GLEASON = obj.getString("GLEASON");
 
-			context.getLogger().info("Age: " + AGE);
-			
-			RowData row = new RowData();
-			row.put("AGE", AGE);
-			row.put("RACE", RACE);
-			row.put("PSA", PSA);
-			row.put("GLEASON", GLEASON);
+		context.getLogger().info("Age: " + AGE);
 
-			//BinomialModelPrediction p = null;
-			//try {
-			//p = model.predictBinomial(row);
-			//} catch (PredictException e) {
-			//	e.printStackTrace();
-			//}
+		RowData row = new RowData();
+		row.put("AGE", AGE);
+		row.put("RACE", RACE);
+		row.put("PSA", PSA);
+		row.put("GLEASON", GLEASON);
 
-			//modelPrediction = p.label;
+		//BinomialModelPrediction p = null;
+		//try {
+		//p = model.predictBinomial(row);
+		//} catch (PredictException e) {
+		//	e.printStackTrace();
+		//}
 
-			return request.createResponse(200, "Label (aka prediction) is: "); //+ modelPrediction);
-		}
+		//modelPrediction = p.label;
+
+		return request.createResponse(200, "Label (aka prediction) is: "); //+ modelPrediction);
+		//}
 	}
 }
