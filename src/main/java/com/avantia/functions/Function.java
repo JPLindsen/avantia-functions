@@ -51,6 +51,8 @@ public class Function {
 
 		JSONObject obj = new JSONObject(name);
 
+		context.getLogger().info("Age: " + obj.get("AGE"));
+		
 		//Getting String values  inside JSONObject obj :
 		String AGE = obj.getString("AGE");
 		String RACE = obj.getString("RACE");
@@ -76,5 +78,6 @@ public class Function {
 
 		return request.createResponse(200, "Label (aka prediction) is: "); //+ modelPrediction);
 		//}
+
 	}
 }
