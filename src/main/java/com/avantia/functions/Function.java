@@ -4,8 +4,8 @@ import java.util.*;
 import com.microsoft.azure.serverless.functions.annotation.*;
 import com.microsoft.azure.serverless.functions.*;
 
-import org.json.*;
-import org.json.JSONObject;
+//import org.json.*;
+//import org.json.JSONObject;
 
 import hex.genmodel.easy.EasyPredictModelWrapper;
 import hex.genmodel.easy.RowData;
@@ -49,16 +49,10 @@ public class Function {
 		context.getLogger().info("#####################");
 		context.getLogger().info("Input Values: " + requestJSON);
 
-		// Create H2O object (see gbm_pojo_test.java)
-		//hex.genmodel.GenModel rawModel;
-		//rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
-		//EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
-
-		//if (name == null) {
-		//	return request.createResponse(400, "Please pass a name on the query string or in the request body");
-		//} else {
-
-		//JSONObject obj = new JSONObject(requestJSON);
+		// Create H2O object
+		hex.genmodel.GenModel rawModel;
+		rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
+		EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
 
 		//Getting String values  inside hash map:
 		String AGE = requestJSON.get("AGE");
@@ -66,24 +60,22 @@ public class Function {
 		String PSA = requestJSON.get("PSA");
 		String GLEASON = requestJSON.get("GLEASON");
 
-		context.getLogger().info("Age: " + AGE);
-
 		RowData row = new RowData();
 		row.put("AGE", AGE);
 		row.put("RACE", RACE);
 		row.put("PSA", PSA);
 		row.put("GLEASON", GLEASON);
 
-		//BinomialModelPrediction p = null;
+		BinomialModelPrediction p = null;
 		//try {
-		//p = model.predictBinomial(row);
+		p = model.predictBinomial(row);
 		//} catch (PredictException e) {
 		//	e.printStackTrace();
 		//}
 
-		//modelPrediction = p.label;
+		modelPrediction = p.label;
 
-		return request.createResponse(200, "Label (aka prediction) is: "); //+ modelPrediction);
+		return request.createResponse(200, "Label (aka prediction) is: " + modelPrediction);
 		//}
 
 	}
