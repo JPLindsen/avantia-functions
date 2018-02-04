@@ -32,7 +32,7 @@ public class Function {
 	public HttpResponseMessage<String> hello(
 			@HttpTrigger(name = "request", methods = {"get", "post"}, 
 			authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage request,
-			final ExecutionContext context) { //throws Exception {
+			final ExecutionContext context) throws Exception {
 		
 		context.getLogger().info("Java HTTP trigger processed a request.");
 
@@ -47,7 +47,7 @@ public class Function {
 		HashMap<String, String> requestJSON = (HashMap<String, String>) body;   // application/json converts to Java LinkedHashMap
 
 		context.getLogger().info("#####################");
-		context.getLogger().info("Input Values: " + requestJSON.get("AGE"));
+		context.getLogger().info("Input Values: " + requestJSON);
 
 		// Create H2O object (see gbm_pojo_test.java)
 		//hex.genmodel.GenModel rawModel;
@@ -58,13 +58,13 @@ public class Function {
 		//	return request.createResponse(400, "Please pass a name on the query string or in the request body");
 		//} else {
 
-		JSONObject obj = new JSONObject(requestJSON.get("value"));
+		//JSONObject obj = new JSONObject(requestJSON);
 
-		//Getting String values  inside JSONObject obj :
-		String AGE = obj.getString("AGE");
-		String RACE = obj.getString("RACE");
-		String PSA = obj.getString("PSA");
-		String GLEASON = obj.getString("GLEASON");
+		//Getting String values  inside hash map:
+		String AGE = requestJSON.get("AGE");
+		String RACE = requestJSON.get("RACE");
+		String PSA = requestJSON.get("PSA");
+		String GLEASON = requestJSON.get("GLEASON");
 
 		context.getLogger().info("Age: " + AGE);
 
