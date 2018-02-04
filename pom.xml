@@ -120,27 +120,32 @@
 				</executions>
 			</plugin>
 
+			<!-- Maven Assembly Plugin -->
 			<plugin>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.1.0</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<!-- get all project dependencies -->
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<!-- MainClass in mainfest make a executable jar -->
+					<archive>
+						<manifest>
+							<mainClass>com.avantia.functions.Function</mainClass>
+						</manifest>
+					</archive>
+
+				</configuration>
 				<executions>
 					<execution>
+						<id>make-assembly</id>
+						<!-- bind to the packaging phase -->
 						<phase>package</phase>
 						<goals>
-							<goal>shade</goal>
+							<goal>single</goal>
 						</goals>
-						<configuration>
-							<filters>
-								<filter>
-									<artifact>*:*</artifact>
-									<excludes>
-										<exclude>META-INF/*.SF</exclude>
-										<exclude>META-INF/*.DSA</exclude>
-										<exclude>META-INF/*.RSA</exclude>
-									</excludes>
-								</filter>
-							</filters>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
