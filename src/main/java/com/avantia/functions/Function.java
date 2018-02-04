@@ -5,6 +5,7 @@ import com.microsoft.azure.serverless.functions.annotation.*;
 import com.microsoft.azure.serverless.functions.*;
 
 import org.json.*;
+import org.json.JSONObject;
 
 import hex.genmodel.easy.EasyPredictModelWrapper;
 import hex.genmodel.easy.RowData;
@@ -29,17 +30,24 @@ public class Function {
 	 */
 	@FunctionName("hello")
 	public HttpResponseMessage<String> hello(
-			@HttpTrigger(name = "req", methods = {"get", "post"}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+			@HttpTrigger(name = "req", methods = {"get", "post"}, 
+			authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
 			final ExecutionContext context) throws Exception {
+		
 		context.getLogger().info("Java HTTP trigger processed a request.");
 
 		// Parse query parameter
 		//String query = request.getQueryParameters().get("name");
 		//String name = request.getBody().orElse(query);
-		String name = request.getBody().toString();
-		
+		//String name = request.getBody().toString();
+
+		Object body = request.getBody();
+
+		@SuppressWarnings("unchecked")          // 2017-11-19 JMC eliminate compiler warning
+		HashMap<String, String> requestJSON = (HashMap<String, String>) body;   // application/json converts to Java LinkedHashMap
+
 		context.getLogger().info("#####################");
-		context.getLogger().info("Input Values: " + name);
+		context.getLogger().info("Input Values: " + requestJSON);
 
 		// Create H2O object (see gbm_pojo_test.java)
 		//hex.genmodel.GenModel rawModel;
@@ -50,13 +58,7 @@ public class Function {
 		//	return request.createResponse(400, "Please pass a name on the query string or in the request body");
 		//} else {
 
-		JSONObject obj = new JSONObject(name);
-
-		//if (isValidJSON(name)){
-			context.getLogger().info("Boo!");
-		//} else if (){
-			context.getLogger().info("Poo!");
-		//}
+		JSONObject obj = new JSONObject(requestJSON);
 
 		//Getting String values  inside JSONObject obj :
 		String AGE = obj.getString("AGE");
