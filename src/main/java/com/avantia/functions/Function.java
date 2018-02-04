@@ -36,11 +36,6 @@ public class Function {
 		
 		context.getLogger().info("Java HTTP trigger processed a request.");
 
-		// Parse query parameter
-		//String query = request.getQueryParameters().get("name");
-		//String name = request.getBody().orElse(query);
-		//String name = request.getBody().toString();
-
 		Object body = request.getBody();
 
 		@SuppressWarnings("unchecked")          // 2017-11-19 JMC eliminate compiler warning
@@ -51,8 +46,8 @@ public class Function {
 
 		// Create H2O object
 		hex.genmodel.GenModel rawModel;
-		rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
-		EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
+		//rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
+		//EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
 
 		//Getting String values  inside hash map:
 		String AGE = requestJSON.get("AGE");
