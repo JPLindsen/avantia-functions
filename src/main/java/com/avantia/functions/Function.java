@@ -46,7 +46,7 @@ public class Function {
 
 		// Create H2O object
 		hex.genmodel.GenModel rawModel;
-		//rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
+		rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
 		//EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
 
 		//Getting String values  inside hash map:
