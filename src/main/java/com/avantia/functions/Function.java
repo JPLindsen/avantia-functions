@@ -50,9 +50,9 @@ public class Function {
 		context.getLogger().info("Input Values: " + requestJSON);
 
 		// Create H2O object
-		hex.genmodel.GenModel rawModel;
-		rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
-		EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
+		//hex.genmodel.GenModel rawModel;
+		//rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
+		//EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
 
 		//Getting String values  inside hash map:
 		String AGE = requestJSON.get("AGE");
@@ -68,17 +68,17 @@ public class Function {
 		row.put("PSA", PSA);
 		row.put("GLEASON", GLEASON);
 
-		BinomialModelPrediction p = null;
+		//BinomialModelPrediction p = null;
 		//try {
-		p = model.predictBinomial(row);
+		//p = model.predictBinomial(row);
 		//} catch (PredictException e) {
 		//	e.printStackTrace();
 		//}
 
-		context.getLogger().info(p.label);
-		modelPrediction = p.label;
+		//context.getLogger().info(p.label);
+		//modelPrediction = p.label;
 
-		return request.createResponse(200, "Label (aka prediction) is: " + modelPrediction);
+		return request.createResponse(200, "Label (aka prediction) is: "); // + modelPrediction);
 		//}
 
 	}
