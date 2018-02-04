@@ -9,7 +9,7 @@ import com.microsoft.azure.serverless.functions.*;
 
 import hex.genmodel.easy.EasyPredictModelWrapper;
 import hex.genmodel.easy.RowData;
-import hex.genmodel.easy.exception.PredictException;
+//import hex.genmodel.easy.exception.PredictException;
 import hex.genmodel.easy.prediction.BinomialModelPrediction;
 
 /**
@@ -69,11 +69,11 @@ public class Function {
 		row.put("GLEASON", GLEASON);
 
 		BinomialModelPrediction p = null;
-		try {
-			p = model.predictBinomial(row);
-		} catch (PredictException e) {
-			e.printStackTrace();
-		}
+		//try {
+		p = model.predictBinomial(row);
+		//} catch (PredictException e) {
+		//	e.printStackTrace();
+		//}
 
 		context.getLogger().info(p.label);
 		modelPrediction = p.label;
