@@ -11,7 +11,6 @@ import hex.genmodel.easy.EasyPredictModelWrapper;
 import hex.genmodel.easy.RowData;
 //import hex.genmodel.easy.exception.PredictException;
 import hex.genmodel.easy.prediction.BinomialModelPrediction;
-//import com.avantia.functions.models.GLM_model_R_1511970560428_1;
 
 /**
  * Azure Functions with HTTP Trigger.
@@ -49,9 +48,6 @@ public class Function {
 		hex.genmodel.GenModel rawModel;
 		rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
 		EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
-
-		//GLM_model_R_1511970560428_1 glmModel = new GLM_model_R_1511970560428_1(); // POJO model
-	    //EasyPredictModelWrapper model = new EasyPredictModelWrapper(glmModel);
 	    
 		//Getting String values  inside hash map:
 		String AGE = requestJSON.get("AGE");
@@ -67,17 +63,17 @@ public class Function {
 		row.put("PSA", PSA);
 		row.put("GLEASON", GLEASON);
 
-		//BinomialModelPrediction p = null;
+		BinomialModelPrediction p = null;
 		//try {
-		//p = model.predictBinomial(row);
+		p = model.predictBinomial(row);
 		//} catch (PredictException e) {
 		//	e.printStackTrace();
 		//}
 
 		//context.getLogger().info(p.label);
-		//modelPrediction = p.label;
+		modelPrediction = p.label;
 
-		return request.createResponse(200, "Label (aka prediction) is: "); // + modelPrediction);
+		return request.createResponse(200, "Label (aka prediction) is: " + modelPrediction);
 		//}
 
 	}
