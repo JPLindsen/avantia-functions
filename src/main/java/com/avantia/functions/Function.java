@@ -9,7 +9,6 @@ import com.microsoft.azure.serverless.functions.*;
 
 import hex.genmodel.easy.EasyPredictModelWrapper;
 import hex.genmodel.easy.RowData;
-import hex.genmodel.GenModel;
 //import hex.genmodel.easy.exception.PredictException;
 import hex.genmodel.easy.prediction.BinomialModelPrediction;
 import com.avantia.functions.models.GLM_model_R_1511970560428_1;
