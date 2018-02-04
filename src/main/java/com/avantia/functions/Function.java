@@ -11,7 +11,7 @@ import hex.genmodel.easy.EasyPredictModelWrapper;
 import hex.genmodel.easy.RowData;
 //import hex.genmodel.easy.exception.PredictException;
 import hex.genmodel.easy.prediction.BinomialModelPrediction;
-import com.avantia.functions.models.GLM_model_R_1511970560428_1;
+//import com.avantia.functions.models.GLM_model_R_1511970560428_1;
 
 /**
  * Azure Functions with HTTP Trigger.
@@ -46,12 +46,12 @@ public class Function {
 		context.getLogger().info("Input Values: " + requestJSON);
 
 		// Create H2O object
-		//hex.genmodel.GenModel rawModel;
-		//rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
-		//EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
+		hex.genmodel.GenModel rawModel;
+		rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
+		EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
 
-		GLM_model_R_1511970560428_1 glmModel = new GLM_model_R_1511970560428_1(); // POJO model
-	    EasyPredictModelWrapper model = new EasyPredictModelWrapper(glmModel);
+		//GLM_model_R_1511970560428_1 glmModel = new GLM_model_R_1511970560428_1(); // POJO model
+	    //EasyPredictModelWrapper model = new EasyPredictModelWrapper(glmModel);
 	    
 		//Getting String values  inside hash map:
 		String AGE = requestJSON.get("AGE");
