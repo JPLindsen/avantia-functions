@@ -50,9 +50,9 @@ public class Function {
 		context.getLogger().info("Input Values: " + requestJSON);
 
 		// Create H2O object
-		//hex.genmodel.GenModel rawModel;
-		//rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
-		//EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
+		hex.genmodel.GenModel rawModel;
+		rawModel = (hex.genmodel.GenModel) Class.forName(modelClassName).newInstance();
+		EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
 
 		//Getting String values  inside hash map:
 		String AGE = requestJSON.get("AGE");
