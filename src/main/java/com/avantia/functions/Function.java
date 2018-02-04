@@ -30,8 +30,8 @@ public class Function {
 	 */
 	@FunctionName("hello")
 	public HttpResponseMessage<String> hello(
-			@HttpTrigger(name = "req", methods = {"get", "post"}, 
-			authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+			@HttpTrigger(name = "request", methods = {"get", "post"}, 
+			authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage request,
 			final ExecutionContext context) throws Exception {
 		
 		context.getLogger().info("Java HTTP trigger processed a request.");
