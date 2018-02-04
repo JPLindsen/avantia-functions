@@ -47,7 +47,7 @@ public class Function {
 		HashMap<String, String> requestJSON = (HashMap<String, String>) body;   // application/json converts to Java LinkedHashMap
 
 		context.getLogger().info("#####################");
-		context.getLogger().info("Input Values: " + requestJSON.get("key"));
+		context.getLogger().info("Input Values: " + requestJSON.get("AGE"));
 
 		// Create H2O object (see gbm_pojo_test.java)
 		//hex.genmodel.GenModel rawModel;
@@ -58,7 +58,7 @@ public class Function {
 		//	return request.createResponse(400, "Please pass a name on the query string or in the request body");
 		//} else {
 
-		JSONObject obj = new JSONObject(requestJSON.get("key"));
+		JSONObject obj = new JSONObject(requestJSON.get("value"));
 
 		//Getting String values  inside JSONObject obj :
 		String AGE = obj.getString("AGE");
